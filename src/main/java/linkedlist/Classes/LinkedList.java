@@ -13,13 +13,13 @@ public class LinkedList extends APrinter implements ILinkedList {
 
     private int size;
 
-    public LinkedList(){
-        this.setFirstNode(null).setLastNode(null).setSizeTo0();
+    public LinkedList() {
+        this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
-}
+    }
 
     public LinkedList setSizeTo0() {
         this.size = 0;
@@ -34,28 +34,27 @@ public class LinkedList extends APrinter implements ILinkedList {
         return tail;
     }
 
-    public LinkedList setFirstNode(Node firstNode) {
-            this.head = firstNode;
-            return this;
+    public LinkedList setHeadNode(Node firstNode) {
+        this.head = firstNode;
+        return this;
     }
 
-    public LinkedList setLastNode(Node lastNode) {
+    public LinkedList setTailNode(Node lastNode) {
         this.tail = lastNode;
         return this;
     }
 
-    public void showSize(){
-        System.out.println(" "+ getSize());
+    public void showListSize() {
+        System.out.println(" " + getSize());
     }
 
-    public void addNodeToList(String value){
+    public void addNodeToTail(String value) {
 
         Node a = new Node(value);
 
-        if(tail == null){
-            head = tail =  a;
-        }
-        else {
+        if (tail == null) {
+            head = tail = a;
+        } else {
             tail.setNextNode(a);
             tail = a;
         }
@@ -64,11 +63,11 @@ public class LinkedList extends APrinter implements ILinkedList {
         updateIndexes();
     }
 
-    public void addNodeToListToFront(String value){
+    public void addNodeToHead(String value) {
 
         Node a = new Node(value);
 
-        if (head == null){
+        if (head == null) {
             head = tail = a;
 
         } else {
@@ -81,27 +80,27 @@ public class LinkedList extends APrinter implements ILinkedList {
         updateIndexes();
     }
 
-    public void clearList(){
-        this.setFirstNode(null).setLastNode(null).setSizeTo0();
+    public void clearList() {
+        this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    public void updateIndexes(){
+    public void updateIndexes() {
 
         int index = 0;
         Node node = getFirstNode();
 
-
         try {
+            node.setIndex(index);
+
+            while (node != null) {
+
+                index++;
+                node = node.getNextNode();
                 node.setIndex(index);
+            }
 
-                while (node != null){
-
-                    index++;
-                    node = node.getNextNode();
-                    node.setIndex(index);
-                }
-
-        } catch (NullPointerException e){}
+        } catch (NullPointerException e) {
+        }
 
     }
 
@@ -110,23 +109,51 @@ public class LinkedList extends APrinter implements ILinkedList {
 
         Node node = getFirstNode();
 
-        try {
+        if(node != null) {
 
-            System.out.println(node.getIndex() + " --> " + node.getValue());
+            try {
+                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод
 
-            while (node.getNextNode() != null) {
-                node = node.getNextNode();
-                System.out.println(node.getIndex() + " --> " + node.getValue());
+                    while (node.getNextNode() != null) {
+                        node = node.getNextNode();
+                        System.out.println(node.getIndex() + " --> " + node.getValue());
 
+                    }
+                } catch (NullPointerException e) {
             }
-        } catch (NullPointerException e){}
+        } else if(getSize() == 0) System.out.println("The list is EMPTY");
+
     }
 
+    public void addNodeByIndex(String value, int index) {
 
-    public void addNodeByIndex(){}
+        Node newNode = new Node(value, index);
+        Node next = new Node();
+        Node prevous = new Node();
+        Node tempNode = getFirstNode();
+
+        while (tempNode.getIndex() != index) {
+            prevous = tempNode;
+            tempNode = tempNode.getNextNode();
+            next = tempNode.getNextNode();
+        }
+
+        prevous.setNextNode(newNode);
+        newNode.setNextNode(next);
+        addNodeToTail(tempNode.getValue());
+        updateIndexes();
+    }
+
     public void removeNodeFromList(){}
     public void removeNodeByIndex(){}
 }
+
+
+
+
+
+
+
 
 
 

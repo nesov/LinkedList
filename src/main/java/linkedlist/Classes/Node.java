@@ -11,18 +11,23 @@ public class Node {
 
     private int index;
 
-    Node (){
+    public Node (){
     }
 
-    Node(String value, Node next, int index){
+    public Node (String value){
+        this.setValue(value);
+    }
+
+    public Node(String value, int index ){
+        this.setValue(value);
+        this.setIndex(index);
+
+    }
+
+    public Node(String value, Node next, int index){
         this.value = value;
         this.next = next;
         this.index = index;
-    }
-
-    Node(String value){
-        this.setValue(value);
-
     }
 
     public String getValue(){
