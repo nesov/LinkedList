@@ -34,6 +34,10 @@ public class Node {
         return this.value;
     }
 
+    public boolean isNull(){
+        return true;
+    }
+
     public void setValue(String value){
         this.value = value;
     }

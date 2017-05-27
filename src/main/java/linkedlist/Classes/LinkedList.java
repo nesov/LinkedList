@@ -26,21 +26,21 @@ public class LinkedList extends APrinter implements ILinkedList {
         return this;
     }
 
-    public Node getFirstNode() {
+    public Node getHeadNode() {
         return head;
     }
 
-    public Node getLastNode() {
+    public Node getTailNode() {
         return tail;
     }
 
-    public LinkedList setHeadNode(Node firstNode) {
-        this.head = firstNode;
+    public LinkedList setHeadNode(Node head) {
+        this.head = head;
         return this;
     }
 
-    public LinkedList setTailNode(Node lastNode) {
-        this.tail = lastNode;
+    public LinkedList setTailNode(Node tail) {
+        this.tail = tail;
         return this;
     }
 
@@ -52,11 +52,14 @@ public class LinkedList extends APrinter implements ILinkedList {
 
         Node a = new Node(value);
 
-        if (tail == null) {
+        if (this.tail == null) {
             head = tail = a;
         } else {
             tail.setNextNode(a);
             tail = a;
+
+            getTailNode().setNextNode(a);
+            setTailNode(a);
         }
         size++;
 
@@ -67,7 +70,7 @@ public class LinkedList extends APrinter implements ILinkedList {
 
         Node a = new Node(value);
 
-        if (head == null) {
+        if (getHeadNode() == null) {
             head = tail = a;
 
         } else {
@@ -75,7 +78,7 @@ public class LinkedList extends APrinter implements ILinkedList {
             head = a;
         }
 
-        size++;
+        this.size++;
 
         updateIndexes();
     }
@@ -87,27 +90,27 @@ public class LinkedList extends APrinter implements ILinkedList {
     public void updateIndexes() {
 
         int index = 0;
-        Node node = getFirstNode();
+        Node node = getHeadNode();
 
         try {
-            node.setIndex(index);
-
-            while (node != null) {
-
-                index++;
-                node = node.getNextNode();
                 node.setIndex(index);
-            }
+
+                while (node.getNextNode() != null) {
+
+                    index++;
+                    node = node.getNextNode();
+                    node.setIndex(index);
+                }
 
         } catch (NullPointerException e) {
-        }
 
+        }
     }
 
     @Override
     public void printList() {
 
-        Node node = getFirstNode();
+        Node node = getHeadNode();
 
         if(node != null) {
 
@@ -128,20 +131,33 @@ public class LinkedList extends APrinter implements ILinkedList {
     public void addNodeByIndex(String value, int index) {
 
         Node newNode = new Node(value, index);
-        Node next = new Node();
-        Node prevous = new Node();
-        Node tempNode = getFirstNode();
 
-        while (tempNode.getIndex() != index) {
-            prevous = tempNode;
-            tempNode = tempNode.getNextNode();
-            next = tempNode.getNextNode();
+
+        if (getTailNode() == null && getHeadNode() == null) {
+
+            if (index <= 0) addNodeToHead(value);
+
+            if (index > index + 1) addNodeToTail(value);
         }
 
-        prevous.setNextNode(newNode);
-        newNode.setNextNode(next);
-        addNodeToTail(tempNode.getValue());
-        updateIndexes();
+        else {
+
+                    Node next = new Node();
+                    Node prevous = new Node();
+                    Node tempNode = getHeadNode();
+
+                    while (tempNode.getIndex() != index) {
+                        prevous = tempNode;
+                        tempNode = tempNode.getNextNode();
+                        next = tempNode.getNextNode();
+                    }
+
+                    prevous.setNextNode(newNode);
+                    newNode.setNextNode(next);
+                    addNodeToTail(tempNode.getValue());
+
+                    updateIndexes();
+        }
     }
 
     public void removeNodeFromList(){}
