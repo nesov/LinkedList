@@ -14,7 +14,7 @@ public interface ILinkedList {
 
     void removeNodeFromList();
 
-    void removeNodeByIndex();
+    void removeNodeByIndex(int index);
 
     void clearList();
 

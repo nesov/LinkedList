@@ -13,6 +13,40 @@ public class LinkedList extends APrinter implements ILinkedList {
 
     private int size;
 
+    private LinkedList setHeadNode(Node head) {
+        this.head = head;
+        return this;
+    }
+
+    private LinkedList setTailNode(Node tail) {
+        this.tail = tail;
+        return this;
+    }
+
+    private void setSizeTo0() {
+        this.size = 0;
+    }
+
+    private void updateIndexes() {
+
+        int index = 0;
+        Node node = getHeadNode();
+
+        try {
+            node.setIndex(index);
+
+            while (node.getNextNode() != null) {
+
+                index++;
+                node = node.getNextNode();
+                node.setIndex(index);
+            }
+
+        } catch (NullPointerException e) {
+
+        }
+    }
+
     public LinkedList() {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
@@ -21,30 +55,16 @@ public class LinkedList extends APrinter implements ILinkedList {
         return this.size;
     }
 
-    public void setSizeTo0() {
-        this.size = 0;
-    }
-
     public Node getHeadNode() {
-        return head;
+        return this.head;
     }
 
     public Node getTailNode() {
-        return tail;
-    }
-
-    public LinkedList setHeadNode(Node head) {
-        this.head = head;
-        return this;
-    }
-
-    public LinkedList setTailNode(Node tail) {
-        this.tail = tail;
-        return this;
+        return this.tail;
     }
 
     public void showListSize() {
-        System.out.println(" " + getSize());
+        System.out.println("The size is : " + getSize());
     }
 
     public void addNodeToTail(String value) {
@@ -83,26 +103,6 @@ public class LinkedList extends APrinter implements ILinkedList {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    public void updateIndexes() {
-
-        int index = 0;
-        Node node = getHeadNode();
-
-        try {
-                node.setIndex(index);
-
-                while (node.getNextNode() != null) {
-
-                    index++;
-                    node = node.getNextNode();
-                    node.setIndex(index);
-                }
-
-        } catch (NullPointerException e) {
-
-        }
-    }
-
     @Override
     public void printList() {
 
@@ -128,48 +128,68 @@ public class LinkedList extends APrinter implements ILinkedList {
 
                 Node newNode = new Node(value, index);
 
-                switch (newNode.getIndex()) {
-                    case 1 : if (newNode.getIndex() <= 0) {
-                                addNodeToHead(value);
-                                System.out.println("Индекс меньше размера списка");
+                if(newNode.getIndex() < 0 || newNode.getIndex() > this.getSize() - 1) throw new IllegalArgumentException();
+
+                else if (newNode.getIndex() == 0)   addNodeToHead(newNode.getValue());
+
+                else if (newNode.getIndex() == getSize() - 1)   addNodeToTail(newNode.getValue());
+
+                else {
+
+                    Node next = new Node();
+                    Node prevous = new Node();
+                    Node temp = getHeadNode();
+
+                    while (temp.getIndex() != index) {
+                        prevous = temp;
+                        temp = temp.getNextNode();
+                        next = temp.getNextNode();
                     }
-                            break;
 
-                    case 2 : if (newNode.getIndex() >= this.getSize() - 1) {
-                                addNodeToTail(value);
-                                System.out.println("Индекс больше размера списка");
-                    }
-                            break;
+                    prevous.setNextNode(newNode);
+                    newNode.setNextNode(next);
+                    addNodeToTail(temp.getValue());
 
-                    case 3:
-                        Node next = new Node();
-                        Node prevous = new Node();
-                        Node tempNode = getHeadNode();
-
-                        System.out.println("добавили в середину по индексу заменямемая нода вынесена в конец");
-
-                        while (tempNode.getIndex() != index) {
-                            prevous = tempNode;
-                            tempNode = tempNode.getNextNode();
-                            next = tempNode.getNextNode();
-                        }
-
-                        prevous.setNextNode(newNode);
-                        newNode.setNextNode(next);
-                        addNodeToTail(tempNode.getValue());
-
-                        updateIndexes();
-
-                        break;
-
-                    default: break;
-
+                    updateIndexes();
                 }
-
     }
 
     public void removeNodeFromList(){}
-    public void removeNodeByIndex(){}
+
+    public void removeNodeByIndex(int index){
+
+        Node next = new Node();
+        Node prevous = new Node();
+        Node temp = getHeadNode();
+
+        if (index < 0 || index > getSize() -1) throw new IllegalArgumentException();
+
+        if (index == 0) setHeadNode(temp.getNextNode());
+
+        if (index == this.getSize() - 1){
+            while (temp.getNextNode() != null){
+                prevous = temp;
+                temp = temp.getNextNode();
+            }
+
+            temp = prevous;
+            setTailNode(temp);
+        }
+
+        else {
+            while (index != temp.getIndex()){
+                prevous = temp;
+                temp = temp.getNextNode();
+                next = temp.getNextNode();
+            }
+                prevous.setNextNode(temp.getNextNode());
+                this.setTailNode(prevous);
+
+        }
+
+//        updateIndexes();
+
+    }
 }
 
 
