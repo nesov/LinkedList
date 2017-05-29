@@ -5,6 +5,7 @@ import linkedlist.Interfaces.ILinkedList;
 /**
  * Created by alexnesov on 24/05/2017.
  */
+@SuppressWarnings("ALL")
 abstract class APrinter implements ILinkedList {
         private LinkedList list;
 

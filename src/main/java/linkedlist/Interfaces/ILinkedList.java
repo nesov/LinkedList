@@ -3,6 +3,7 @@ package linkedlist.Interfaces;
 /**
  * Created by alexnesov on 25/05/2017.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public interface ILinkedList {
 
     void addNodeToTail(String value);

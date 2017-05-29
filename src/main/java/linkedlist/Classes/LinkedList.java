@@ -21,9 +21,8 @@ public class LinkedList extends APrinter implements ILinkedList {
         return this.size;
     }
 
-    public LinkedList setSizeTo0() {
+    public void setSizeTo0() {
         this.size = 0;
-        return this;
     }
 
     public Node getHeadNode() {
@@ -52,12 +51,9 @@ public class LinkedList extends APrinter implements ILinkedList {
 
         Node a = new Node(value);
 
-        if (this.tail == null) {
-            head = tail = a;
+        if (getTailNode() == null) {
+            this.head = this.tail = a;
         } else {
-            tail.setNextNode(a);
-            tail = a;
-
             getTailNode().setNextNode(a);
             setTailNode(a);
         }
@@ -71,11 +67,11 @@ public class LinkedList extends APrinter implements ILinkedList {
         Node a = new Node(value);
 
         if (getHeadNode() == null) {
-            head = tail = a;
+            this.head = this.tail = a;
 
         } else {
-            a.setNextNode(head);
-            head = a;
+            a.setNextNode(getHeadNode());
+            setHeadNode(a);
         }
 
         this.size++;
@@ -130,34 +126,46 @@ public class LinkedList extends APrinter implements ILinkedList {
 
     public void addNodeByIndex(String value, int index) {
 
-        Node newNode = new Node(value, index);
+                Node newNode = new Node(value, index);
 
-
-        if (getTailNode() == null && getHeadNode() == null) {
-
-            if (index <= 0) addNodeToHead(value);
-
-            if (index > index + 1) addNodeToTail(value);
-        }
-
-        else {
-
-                    Node next = new Node();
-                    Node prevous = new Node();
-                    Node tempNode = getHeadNode();
-
-                    while (tempNode.getIndex() != index) {
-                        prevous = tempNode;
-                        tempNode = tempNode.getNextNode();
-                        next = tempNode.getNextNode();
+                switch (newNode.getIndex()) {
+                    case 1 : if (newNode.getIndex() <= 0) {
+                                addNodeToHead(value);
+                                System.out.println("Индекс меньше размера списка");
                     }
+                            break;
 
-                    prevous.setNextNode(newNode);
-                    newNode.setNextNode(next);
-                    addNodeToTail(tempNode.getValue());
+                    case 2 : if (newNode.getIndex() >= this.getSize() - 1) {
+                                addNodeToTail(value);
+                                System.out.println("Индекс больше размера списка");
+                    }
+                            break;
 
-                    updateIndexes();
-        }
+                    case 3:
+                        Node next = new Node();
+                        Node prevous = new Node();
+                        Node tempNode = getHeadNode();
+
+                        System.out.println("добавили в середину по индексу заменямемая нода вынесена в конец");
+
+                        while (tempNode.getIndex() != index) {
+                            prevous = tempNode;
+                            tempNode = tempNode.getNextNode();
+                            next = tempNode.getNextNode();
+                        }
+
+                        prevous.setNextNode(newNode);
+                        newNode.setNextNode(next);
+                        addNodeToTail(tempNode.getValue());
+
+                        updateIndexes();
+
+                        break;
+
+                    default: break;
+
+                }
+
     }
 
     public void removeNodeFromList(){}
