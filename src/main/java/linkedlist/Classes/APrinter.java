@@ -11,7 +11,9 @@ abstract class APrinter implements ILinkedList {
 
         public abstract void printList();
 
-        public void printSize(){
+        public void printSize(LinkedList list){
+                list = new LinkedList();
+
                 try {
                         System.out.println("The size is : " + list.getSize());
                 } catch (NullPointerException e){}

@@ -23,6 +23,10 @@ public class LinkedList extends APrinter implements ILinkedList {
         return this;
     }
 
+    private void setSize(int size){
+        this.size = size;
+    }
+
     private void setSizeTo0() {
         this.size = 0;
     }
@@ -47,21 +51,24 @@ public class LinkedList extends APrinter implements ILinkedList {
         }
     }
 
-    public LinkedList() {
-        this.setHeadNode(null).setTailNode(null).setSizeTo0();
-    }
-
     public int getSize() {
         return this.size;
     }
 
-    public Node getHeadNode() {
+    private Node getHeadNode() {
         return this.head;
     }
 
-    public Node getTailNode() {
+    private Node getTailNode() {
         return this.tail;
     }
+
+    public LinkedList() {
+        this.setHeadNode(null).setTailNode(null).setSizeTo0();
+    }
+
+
+
 
     public void showListSize() {
         System.out.println("The size is : " + getSize());
@@ -120,7 +127,7 @@ public class LinkedList extends APrinter implements ILinkedList {
                     }
                 } catch (NullPointerException e) {
             }
-        } else if(getSize() == 0) System.out.println("The list is EMPTY");
+        } else if(this.getSize() == 0) System.out.println("The list is EMPTY");
 
     }
 
@@ -154,21 +161,39 @@ public class LinkedList extends APrinter implements ILinkedList {
                 }
     }
 
-    public void removeNodeFromList(){}
+    public void removeNodeFromList(){
+
+        Node temp = this.getHeadNode();
+        Node previous = new Node();
+
+        while(temp.getNextNode() != null){
+             previous = temp;
+             temp = temp.getNextNode();
+        }
+
+        if (previous != this.getHeadNode() && previous != getTailNode())
+            this.setTailNode(previous);
+
+        else
+            this.setHeadNode(null).setTailNode(null).setSizeTo0();
+
+        this.updateIndexes();
+        this.setSize(this.size--);
+
+    }
 
     public void removeNodeByIndex(int index){
 
-        Node next = new Node();
         Node prevous = new Node();
         Node temp = getHeadNode();
 
-        if (index < 0 || index > getSize() -1) throw new IllegalArgumentException();
+        if (index < 0 || index > getSize() -1) throw new IllegalArgumentException("Не корректный диапазон");
 
         if (index == 0) setHeadNode(temp.getNextNode());
 
         if (index == this.getSize() - 1){
             while (temp.getNextNode() != null){
-                prevous = temp;
+                prevous = temp.getNextNode();
                 temp = temp.getNextNode();
             }
 
@@ -180,14 +205,14 @@ public class LinkedList extends APrinter implements ILinkedList {
             while (index != temp.getIndex()){
                 prevous = temp;
                 temp = temp.getNextNode();
-                next = temp.getNextNode();
             }
                 prevous.setNextNode(temp.getNextNode());
                 this.setTailNode(prevous);
 
         }
 
-//        updateIndexes();
+        this.updateIndexes();
+        this.setSize(this.size--);
 
     }
 }
