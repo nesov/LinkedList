@@ -1,12 +1,14 @@
-package linkedlist.Classes;
+package com.classes;
 
-import linkedlist.Interfaces.ILinkedList;
+
+import com.iterfaces.IList;
+import com.classes.LinkedList.LinkedList;
 
 /**
  * Created by alexnesov on 24/05/2017.
  */
 @SuppressWarnings("ALL")
-abstract class APrinter implements ILinkedList {
+abstract class APrinter implements IList {
         private LinkedList list;
 
         public abstract void printList();

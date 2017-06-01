@@ -1,11 +1,11 @@
-package linkedlist.Classes;
+package com.classes.LinkedList;
 
-import linkedlist.Interfaces.ILinkedList;
+import com.iterfaces.IList;
 
 /**
  * Created by alexnesov on 24/05/2017.
  */
-public class LinkedList extends APrinter implements ILinkedList {
+public class LinkedList<E> implements IList {
 
     private Node head = new Node();
 
@@ -67,14 +67,11 @@ public class LinkedList extends APrinter implements ILinkedList {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-
-
-
     public void showListSize() {
         System.out.println("The size is : " + getSize());
     }
 
-    public void addNodeToTail(String value) {
+    public void addNodeToTail(E value) {
 
         Node a = new Node(value);
 
@@ -89,7 +86,7 @@ public class LinkedList extends APrinter implements ILinkedList {
         updateIndexes();
     }
 
-    public void addNodeToHead(String value) {
+    public void addNodeToHead(E value) {
 
         Node a = new Node(value);
 
@@ -110,7 +107,6 @@ public class LinkedList extends APrinter implements ILinkedList {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    @Override
     public void printList() {
 
         Node node = getHeadNode();
@@ -131,7 +127,7 @@ public class LinkedList extends APrinter implements ILinkedList {
 
     }
 
-    public void addNodeByIndex(String value, int index) {
+    public void addNodeByIndex(E value, int index) {
 
                 Node newNode = new Node(value, index);
 
@@ -155,7 +151,7 @@ public class LinkedList extends APrinter implements ILinkedList {
 
                     prevous.setNextNode(newNode);
                     newNode.setNextNode(next);
-                    addNodeToTail(temp.getValue());
+                    addNodeToTail(temp.getValue(E));
 
                     updateIndexes();
                 }
@@ -187,7 +183,7 @@ public class LinkedList extends APrinter implements ILinkedList {
         Node prevous = new Node();
         Node temp = getHeadNode();
 
-        if (index < 0 || index > getSize() -1) throw new IllegalArgumentException("Не корректный диапазон");
+        if (index < 0 || index > getSize() -1) throw new IllegalArgumentException();
 
         if (index == 0) setHeadNode(temp.getNextNode());
 
