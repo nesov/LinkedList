@@ -1,14 +1,8 @@
 package com.classes;
-
-
-import com.iterfaces.IList;
 import com.classes.LinkedList.LinkedList;
 
-/**
- * Created by alexnesov on 24/05/2017.
- */
-@SuppressWarnings("ALL")
-abstract class APrinter implements IList {
+
+abstract class APrinter {
         private LinkedList list;
 
         public abstract void printList();

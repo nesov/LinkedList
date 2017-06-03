@@ -1,11 +1,11 @@
 package com.classes.LinkedList;
 
-import com.iterfaces.IList;
 
-/**
- * Created by alexnesov on 24/05/2017.
- */
-public class LinkedList<E> implements IList {
+import com.AbstractDataStructure;
+
+
+
+public class LinkedList <E> extends AbstractDataStructure{
 
     private Node head = new Node();
 
@@ -67,11 +67,7 @@ public class LinkedList<E> implements IList {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    public void showListSize() {
-        System.out.println("The size is : " + getSize());
-    }
-
-    public void addNodeToTail(E value) {
+    private void addNodeToTail(E value) {
 
         Node a = new Node(value);
 
@@ -86,7 +82,7 @@ public class LinkedList<E> implements IList {
         updateIndexes();
     }
 
-    public void addNodeToHead(E value) {
+    private void addNodeToHead(E value) {
 
         Node a = new Node(value);
 
@@ -114,7 +110,7 @@ public class LinkedList<E> implements IList {
         if(node != null) {
 
             try {
-                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод
+                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод!
 
                     while (node.getNextNode() != null) {
                         node = node.getNextNode();
@@ -133,9 +129,11 @@ public class LinkedList<E> implements IList {
 
                 if(newNode.getIndex() < 0 || newNode.getIndex() > this.getSize() - 1) throw new IllegalArgumentException();
 
-                else if (newNode.getIndex() == 0)   addNodeToHead(newNode.getValue());
+                else if (newNode.getIndex() == 0)   addNodeToHead((E) newNode.getValue());
 
-                else if (newNode.getIndex() == getSize() - 1)   addNodeToTail(newNode.getValue());
+
+                //TODO Некорректно отрабатывает условие!
+                else if (newNode.getIndex() == getSize() - 1)   addNodeToTail((E) newNode.getValue());
 
                 else {
 
@@ -151,7 +149,7 @@ public class LinkedList<E> implements IList {
 
                     prevous.setNextNode(newNode);
                     newNode.setNextNode(next);
-                    addNodeToTail(temp.getValue(E));
+                    addNodeToTail((E) temp.getValue());
 
                     updateIndexes();
                 }
@@ -167,7 +165,7 @@ public class LinkedList<E> implements IList {
              temp = temp.getNextNode();
         }
 
-        if (previous != this.getHeadNode() && previous != getTailNode())
+        if (previous != this.getHeadNode() && previous != this.getTailNode())
             this.setTailNode(previous);
 
         else
@@ -211,6 +209,25 @@ public class LinkedList<E> implements IList {
         this.setSize(this.size--);
 
     }
+
+/*-------------------------------------------------------------------------------------------*/
+    public void add(Object value){
+        this.addNodeToTail((E)value);
+    }
+
+    public void delete(){
+        this.clearList();
+    }
+
+    public void insert(Object value, int index) {
+        this.addNodeByIndex((E)value,index);
+    }
+
+    public void size(){
+        System.out.println(this.getSize());
+        this.printList();
+    }
+
 }
 
 
