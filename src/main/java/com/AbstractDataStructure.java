@@ -8,7 +8,7 @@ public abstract class AbstractDataStructure implements IList {
 
     public abstract void add(Object value);
     public abstract void insert(Object value, int index);
-    public abstract void size();
+    public abstract int size();
     public abstract void delete();
 
 }

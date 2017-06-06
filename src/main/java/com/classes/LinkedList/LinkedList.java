@@ -1,11 +1,10 @@
 package com.classes.LinkedList;
 
 
-import com.AbstractDataStructure;
+import com.IList;
 
 
-
-public class LinkedList <E> extends AbstractDataStructure{
+public class LinkedList <E> implements IList {
 
     private Node head = new Node();
 
@@ -223,9 +222,8 @@ public class LinkedList <E> extends AbstractDataStructure{
         this.addNodeByIndex((E)value,index);
     }
 
-    public void size(){
-        System.out.println(this.getSize());
-        this.printList();
+    public int size(){
+        return this.getSize();
     }
 
 }
