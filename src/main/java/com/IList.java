@@ -6,6 +6,13 @@ package com;
 public interface IList<E> {
     void add(E value);
     int size();
+
     void delete();
     void insert(E value, int index);
+
+    Object getFirstElement();
+    Object getNextElement();
+
+    Object getElementValue();
+    int getElementIndex();
 }
