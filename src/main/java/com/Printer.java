@@ -9,15 +9,16 @@ public class Printer {
 
                 Object node = list.getFirstElement();
 
+                Object val = list.getFirstElement()
 
                 for(int i = 0; i< list.size(); i++){
                         if(node == list.getFirstElement()){
-                                System.out.print(list.getElementValue() + ",");
+                                System.out.print(node + ",");
                                 node = list.getNextElement();
                         }
                         else {
-                                System.out.println(list.getElementValue() + ",");
-                                node = list.getNextElement();
+                                System.out.print(node + ",");
+                                node = list.getFirstElement();
                         }
                 }
 

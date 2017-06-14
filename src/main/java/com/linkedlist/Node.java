@@ -4,7 +4,7 @@ package com.linkedlist;
 /**
  * Created by alexnesov on 24/05/2017.
  */
-public class Node <E>{
+public class Node <E> extends Object{
 
     private E value;
 

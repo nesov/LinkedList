@@ -237,13 +237,19 @@ public class LinkedList <E> implements IList {
     }
 
     public Object getElementValue(){
-        Node node = new Node();
-        return node.getValue();
+        Object obj;
+        obj = this.getElementValue();
+        return obj;
     }
 
-    public int getElementIndex(){
-        Node node = new Node();
-        return node.getIndex();
+    public void getElementIndex(){
+    }
+
+    public void setFirstElement(){
+
+    }
+
+    public void setNextElement(){
 
     }
 

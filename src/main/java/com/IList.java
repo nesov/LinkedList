@@ -14,5 +14,8 @@ public interface IList<E> {
     Object getNextElement();
 
     Object getElementValue();
-    int getElementIndex();
+    void getElementIndex();
+
+    void setFirstElement();
+    void setNextElement();
 }
