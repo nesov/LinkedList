@@ -1,7 +1,8 @@
-package com.linkedlist;
+package com.classes.linkedlist;
 
 
 import com.IList;
+import com.INode;
 
 
 public class LinkedList <E> implements IList {
@@ -226,7 +227,7 @@ public class LinkedList <E> implements IList {
         return this.getSize();
     }
 
-    public Object getFirstElement(){
+    public INode getFirstElement(){
         Node node = getHeadNode();
         return node;
     }

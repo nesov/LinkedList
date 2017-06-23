@@ -1,6 +1,6 @@
 import com.IList;
 import com.Printer;
-import com.linkedlist.LinkedList;
+import com.classes.linkedlist.LinkedList;
 
 /**
  * Created by julia on 06.06.17.
@@ -25,16 +25,9 @@ public class Main {
         list.add(list);
         list.add(printer);
 
-        System.out.println(list.size());
-
-        list.getFirstElement();
-
-
-
 
         printer.print(list);
 
-//        printer.printWithIndexes(list);
     }
 
 }

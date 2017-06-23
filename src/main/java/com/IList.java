@@ -10,7 +10,7 @@ public interface IList<E> {
     void delete();
     void insert(E value, int index);
 
-    Object getFirstElement();
+    INode getFirstElement();
     Object getNextElement();
 
     Object getElementValue();

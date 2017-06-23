@@ -1,5 +1,6 @@
 package com;
 
+
 public class Printer {
 
         public Printer(){}
@@ -7,21 +8,24 @@ public class Printer {
 
         public void print(IList list){
 
-                Object node = list.getFirstElement();
+               INode node = list.getFirstElement();
 
-                Object val = list.getFirstElement()
+               Object temp;
+
+
 
                 for(int i = 0; i< list.size(); i++){
                         if(node == list.getFirstElement()){
-                                System.out.print(node + ",");
-                                node = list.getNextElement();
+                                System.out.print(node.getValue() + ",");
+                                temp = list.getNextElement();
+                                node = (INode) temp;
                         }
                         else {
-                                System.out.print(node + ",");
+                                System.out.print(node.getValue() + ",");
                                 node = list.getFirstElement();
                         }
-                }
 
+                }
         }
 
 //        public void print(IList list){

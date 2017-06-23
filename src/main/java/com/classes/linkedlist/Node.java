@@ -1,10 +1,12 @@
-package com.linkedlist;
+package com.classes.linkedlist;
 
+
+import com.INode;
 
 /**
  * Created by alexnesov on 24/05/2017.
  */
-public class Node <E> extends Object{
+public class Node <E>  implements INode {
 
     private E value;
 
@@ -50,7 +52,7 @@ public class Node <E> extends Object{
         return this.index;
     }
 
-    protected void setIndex(int index){
+    void setIndex(int index){
         this.index = index;
     }
 }
