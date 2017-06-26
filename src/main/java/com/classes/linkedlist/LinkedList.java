@@ -103,25 +103,25 @@ public class LinkedList <E> implements IList {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-    public void printList() {
-
-        Node node = getHeadNode();
-
-        if(node != null) {
-
-            try {
-                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод!
-
-                    while (node.getNextNode() != null) {
-                        node = node.getNextNode();
-                        System.out.println(node.getIndex() + " --> " + node.getValue());
-
-                    }
-                } catch (NullPointerException e) {
-            }
-        } else if(this.getSize() == 0) System.out.println("The list is EMPTY");
-
-    }
+//    public void printList() {
+//
+//        Node node = getHeadNode();
+//
+//        if(node != null) {
+//
+//            try {
+//                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод!
+//
+//                    while (node.getNextNode() != null) {
+//                        node = node.getNextNode();
+//                        System.out.println(node.getIndex() + " --> " + node.getValue());
+//
+//                    }
+//                } catch (NullPointerException e) {
+//            }
+//        } else if(this.getSize() == 0) System.out.println("The list is EMPTY");
+//
+//    }
 
     public void addNodeByIndex(E value, int index) {
 
