@@ -13,7 +13,6 @@ public class Main {
 
         Printer printer = new Printer();
 
-
         list.add("String");
         list.add(1);
         list.add(2.0);
@@ -43,9 +42,7 @@ public class Main {
         list.add(list);
         list.add(printer);
 
-
         printer.print(list);
-        System.out.println();
         printer.printWithIndexes(list);
 
     }

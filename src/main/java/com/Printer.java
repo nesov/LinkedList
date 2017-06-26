@@ -1,10 +1,9 @@
 package com;
 
 
-public class Printer {
+public class Printer extends Object {
 
         public Printer(){}
-
 
         public void print(IList list){
 
@@ -26,8 +25,6 @@ public class Printer {
                 }
         }
 
-
-
         public void printWithIndexes(IList list) {
 
                 INode node = list.getFirstElement();
@@ -36,7 +33,7 @@ public class Printer {
 
                 for(int i = 0; i< list.size(); i++) {
                         if(node == list.getFirstElement()) {
-                            System.out.println(node.getValue() + " |-->at index ["+ node.getIndex()+"]");
+                            System.out.println(node.getValue() + " |--> at index ["+ node.getIndex()+"]");
                             temp = list.getNextElement();
                             node = (INode) temp;
                         } else {
