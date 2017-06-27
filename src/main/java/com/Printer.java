@@ -33,11 +33,11 @@ public class Printer extends Object {
 
                 for(int i = 0; i< list.size(); i++) {
                         if(node == list.getFirstElement()) {
-                            System.out.println(node.getValue() + " |--> at index ["+ node.getIndex()+"]");
+                            System.out.println("at index ["+node.getIndex()+"] -->  "+node.getValue());
                             temp = list.getNextElement();
                             node = (INode) temp;
                         } else {
-                            System.out.println(node.getValue() + " |--> at index ["+ node.getIndex()+"]");
+                            System.out.println("at index ["+node.getIndex()+"] -->  "+node.getValue());
                             temp = node.getNextNode();
                             node = (INode) temp;
                         }
