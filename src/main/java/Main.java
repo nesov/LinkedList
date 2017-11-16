@@ -2,16 +2,15 @@ import com.IList;
 import com.Printer;
 import com.classes.linkedlist.LinkedList;
 
-/**
- * Created by julia on 06.06.17.
- */
-public class Main {
 
+public class Main {
+    
     public static void main(String[] args) {
 
-        IList list = new LinkedList();
+        IList list, printer;
 
-        Printer printer = new Printer();
+        list = new LinkedList();
+        printer =  new Printer();
 
         list.add("String");
         list.add(1);
@@ -40,10 +39,13 @@ public class Main {
         list.add('K');
         list.add("Last item asiudyuaisdiuaysdui");
         list.add(list);
-        list.add(printer);
+
+        printer.printWithIndexes(list);
 
         printer.print(list);
-        printer.printWithIndexes(list);
+
+
+
 
     }
 

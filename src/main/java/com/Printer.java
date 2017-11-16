@@ -1,9 +1,10 @@
 package com;
 
 
-public class Printer extends Object {
+public class Printer extends Object implements IPrintable{
 
-        public Printer(){}
+        public Printer(){
+        }
 
         public void print(IList list){
 
@@ -43,6 +44,7 @@ public class Printer extends Object {
                         }
                 }
         }
+
 }
 
 

@@ -4,7 +4,7 @@ package com;
 /**
  * Created by alexnesov on 03/06/2017.
  */
-public interface IList<E>  {
+public interface IList<E>  extends IPrintable {
     void add(E value);
     int size();
 
@@ -19,4 +19,6 @@ public interface IList<E>  {
 
     void setFirstElement();
     void setNextElement();
+    void print(IList ob);
+    void printWithIndexes(IList ob);
 }

@@ -1,11 +1,11 @@
 package com.classes.linkedlist;
 
-
 import com.IList;
 import com.INode;
+import com.IPrintable;
 
 
-public class LinkedList <E> implements IList {
+public class LinkedList <E> implements IList, IPrintable {
 
     private Node head = new Node();
 
@@ -251,6 +251,14 @@ public class LinkedList <E> implements IList {
     }
 
     public void setNextElement(){
+
+    }
+
+    public void print(IList ob) {
+
+    }
+
+    public void printWithIndexes(IList ob) {
 
     }
 
