@@ -1,33 +1,12 @@
-package com;
+package com.classes.linkedlist;
 
 
-public class Printer extends Object implements IPrintable, IList {
+import com.IList;
+import com.INode;
 
-        public Printer(){}
+abstract class Printer {
 
-        public void add(Object object) {
 
-        }
-
-        public void delete() {
-
-        }
-
-        public void insert(Object object, int index) {
-
-        }
-
-        public int size() {
-                return 0;
-        }
-
-        public INode getFirstElement() {
-                return null;
-        }
-
-        public Object getNextElement() {
-                return null;
-        }
 
         public void print(IList list){
 

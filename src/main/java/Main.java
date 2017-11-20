@@ -1,6 +1,4 @@
 import com.IList;
-import com.IPrintable;
-import com.Printer;
 import com.classes.linkedlist.LinkedList;
 
 
@@ -8,10 +6,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        IList list, printer;
-
-        list = new LinkedList();
-        printer =  new Printer();
+        IList list = new LinkedList();
 
         list.add("String");
         list.add(1);
@@ -41,13 +36,11 @@ public class Main {
         list.add("Last item asiudyuaisdiuaysdui");
         list.add(list);
 
-        printer.printWithIndexes(list);
-
-        printer.print(list);
 
 
 
-
+        list.printWithIndexes();
+        list.print();
     }
 
 }

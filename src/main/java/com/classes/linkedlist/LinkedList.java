@@ -5,7 +5,7 @@ import com.INode;
 import com.IPrintable;
 
 
-public class LinkedList <E> implements IList, IPrintable {
+public class LinkedList <E> extends Printer implements IList, IPrintable {
 
     private Node head = new Node();
 
@@ -254,12 +254,12 @@ public class LinkedList <E> implements IList, IPrintable {
 
     }
 
-    public void print(IList ob) {
-
+    public void print() {
+        super.print(this);
     }
 
-    public void printWithIndexes(IList ob) {
-
+    public void printWithIndexes() {
+        super.printWithIndexes(this);
     }
 
 }

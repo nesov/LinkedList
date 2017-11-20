@@ -11,7 +11,7 @@ public interface IList<E>  extends IPrintable {
     int size();
     INode getFirstElement();
     Object getNextElement();
-    void print(IList list);
-    void printWithIndexes(IList iList);
 
+    void printWithIndexes();
+    void print();
 }
