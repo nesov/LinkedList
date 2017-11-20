@@ -5,20 +5,13 @@ package com;
  * Created by alexnesov on 03/06/2017.
  */
 public interface IList<E>  extends IPrintable {
-    void add(E value);
-    int size();
-
+    void add(Object object);
     void delete();
-    void insert(E value, int index);
-
+    void insert(Object object, int index);
+    int size();
     INode getFirstElement();
     Object getNextElement();
+    void print(IList list);
+    void printWithIndexes(IList iList);
 
-    Object getElementValue();
-    void getElementIndex();
-
-    void setFirstElement();
-    void setNextElement();
-    void print(IList ob);
-    void printWithIndexes(IList ob);
 }

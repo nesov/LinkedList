@@ -1,9 +1,32 @@
 package com;
 
 
-public class Printer extends Object implements IPrintable{
+public class Printer extends Object implements IPrintable, IList {
 
-        public Printer(){
+        public Printer(){}
+
+        public void add(Object object) {
+
+        }
+
+        public void delete() {
+
+        }
+
+        public void insert(Object object, int index) {
+
+        }
+
+        public int size() {
+                return 0;
+        }
+
+        public INode getFirstElement() {
+                return null;
+        }
+
+        public Object getNextElement() {
+                return null;
         }
 
         public void print(IList list){

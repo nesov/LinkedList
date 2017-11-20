@@ -1,4 +1,5 @@
 import com.IList;
+import com.IPrintable;
 import com.Printer;
 import com.classes.linkedlist.LinkedList;
 
