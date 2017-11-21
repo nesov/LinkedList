@@ -103,26 +103,6 @@ public class LinkedList <E> extends Printer implements IList, IPrintable {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
 
-//    public void printList() {
-//
-//        Node node = getHeadNode();
-//
-//        if(node != null) {
-//
-//            try {
-//                    System.out.println(node.getIndex() + " --> " + node.getValue());   //TODO нужно бы пофиксить гвонокод!
-//
-//                    while (node.getNextNode() != null) {
-//                        node = node.getNextNode();
-//                        System.out.println(node.getIndex() + " --> " + node.getValue());
-//
-//                    }
-//                } catch (NullPointerException e) {
-//            }
-//        } else if(this.getSize() == 0) System.out.println("The list is EMPTY");
-//
-//    }
-
     public void addNodeByIndex(E value, int index) {
 
                 Node newNode = new Node(value, index);
@@ -211,8 +191,8 @@ public class LinkedList <E> extends Printer implements IList, IPrintable {
     }
 
 /*-------------------------------------------------------------------------------------------*/
-    public void add(Object value){
-        this.addNodeToTail((E)value);
+    public void add (Object value){
+        this.addNodeToTail((E) value);
     }
 
     public void delete(){
@@ -220,7 +200,7 @@ public class LinkedList <E> extends Printer implements IList, IPrintable {
     }
 
     public void insert(Object value, int index) {
-        this.addNodeByIndex((E)value,index);
+        this.addNodeByIndex((E)value, index);
     }
 
     public int size(){
@@ -241,17 +221,6 @@ public class LinkedList <E> extends Printer implements IList, IPrintable {
         Object obj;
         obj = this.getElementValue();
         return obj;
-    }
-
-    public void getElementIndex(){
-    }
-
-    public void setFirstElement(){
-
-    }
-
-    public void setNextElement(){
-
     }
 
     public void print() {

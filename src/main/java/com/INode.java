@@ -3,10 +3,9 @@ package com;
 /**
  * Created by alexnesov on 23/06/2017.
  */
-public interface INode {
+public interface INode<T> {
 
-    Object getValue();
-    Object getNextNode();
+    T getValue();
+    T getNextNode();
     int getIndex();
-
 }

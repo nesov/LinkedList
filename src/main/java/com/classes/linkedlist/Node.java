@@ -6,9 +6,9 @@ import com.INode;
 /**
  * Created by alexnesov on 24/05/2017.
  */
-public class Node <E>  implements INode {
+public class Node <T>  implements INode {
 
-    private E value;
+    private T value;
 
     private Node next;
 
@@ -17,26 +17,26 @@ public class Node <E>  implements INode {
     protected Node (){
     }
 
-    protected Node (E value){
+    protected Node (T value){
         this.setValue(value);
     }
 
-    protected Node(E value, int index ){
+    protected Node(T value, int index ){
         this.setValue(value);
         this.setIndex(index);
     }
 
-    protected Node(E value, Node next, int index){
+    protected Node(T value, Node next, int index){
         this.setValue(value);
         this.setNextNode(next);
         this.setIndex(index);
     }
 
-    public E getValue(){
+    public T getValue(){
         return this.value;
     }
 
-    protected void setValue(E value){
+    protected void setValue(T value){
         this.value = value;
     }
 
