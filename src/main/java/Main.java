@@ -22,16 +22,16 @@ public class Main {
         list.add('K');
         list.add("Last item asiudyuaisdiuaysdui");
         list.add(list);
-        list.insert(list, 1);
+        list.insert(list, 0);
 
 
 
         list.printWithIndexes();
-//        list.print();
+        list.print();
         System.out.println(list.size());
         list.delete();
 
-        System.out.println(list.size());
+//        list.defaultMetod();
     }
-
 }
+

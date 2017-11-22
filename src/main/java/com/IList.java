@@ -13,4 +13,8 @@ public interface IList <E> extends IPrintable {
     Object getNextElement();
     void printWithIndexes();
     void print();
+
+//    default void defaultMetod(){
+//        System.out.println("Hello from default method");
+//    }
 }

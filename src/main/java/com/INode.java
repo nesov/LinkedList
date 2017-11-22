@@ -6,6 +6,8 @@ package com;
 public interface INode<T> {
 
     T getValue();
+
     T getNextNode();
+
     int getIndex();
 }

@@ -4,8 +4,7 @@ package com.classes.linkedlist;
 import com.IList;
 import com.INode;
 
-abstract class Printer {
-
+abstract class AbstractPrinter {
 
 
         public void print(IList list){

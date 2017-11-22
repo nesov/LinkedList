@@ -45,7 +45,7 @@ public class Node <T>  implements INode {
     }
 
     protected void setNextNode(Node next){
-        this.next = next;
+        this.next =  next;
     }
 
     public int getIndex(){
