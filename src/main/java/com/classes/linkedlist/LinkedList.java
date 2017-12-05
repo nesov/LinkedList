@@ -5,32 +5,25 @@ import com.INode;
 import com.IPrintable;
 
 
-public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable {
+public class LinkedList <E> implements IList {
 
     private Node head = new Node();
-
     private Node tail = new Node();
-
     private int size;
-
     private LinkedList setHeadNode(Node head) {
         this.head = head;
         return this;
     }
-
     private LinkedList setTailNode(Node tail) {
         this.tail = tail;
         return this;
     }
-
     private void setSize(int size){
         this.size = size;
     }
-
     private void setSizeTo0() {
         this.size = 0;
     }
-
     private void updateIndexes() {
 
         int index = 0;
@@ -50,23 +43,6 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
 
         }
     }
-
-    public int getSize() {
-        return this.size;
-    }
-
-    public Node getHeadNode() {
-        return this.head;
-    }
-
-    public Node getTailNode() {
-        return this.tail;
-    }
-
-    public LinkedList() {
-        this.setHeadNode(null).setTailNode(null).setSizeTo0();
-    }
-
     private void addNodeToTail(E value) {
 
         Node a = new Node(value);
@@ -81,7 +57,6 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
 
         updateIndexes();
     }
-
     private void addNodeToHead(E value) {
 
         Node a = new Node(value);
@@ -98,11 +73,22 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
 
         updateIndexes();
     }
-
+    /*--------------------------------------------*/
+    public LinkedList() {
+        this.setHeadNode(null).setTailNode(null).setSizeTo0();
+    }
+    public int getSize() {
+        return this.size;
+    }
+    public Node getHeadNode() {
+        return this.head;
+    }
+    public Node getTailNode() {
+        return this.tail;
+    }
     public void clearList() {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
-
     public void addNodeByIndex(E value, int index) {
 
                 Node newNode = new Node(value, index);
@@ -134,7 +120,6 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
                     updateIndexes();
                 }
     }
-
     public void removeNodeFromList(){
 
         Node temp = this.getHeadNode();
@@ -155,7 +140,6 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
         this.setSize(this.size--);
 
     }
-
     public void removeNodeByIndex(int index){
 
         Node prevous = new Node();
@@ -189,49 +173,31 @@ public class LinkedList <E> extends AbstractPrinter implements IList, IPrintable
         this.setSize(this.size--);
 
     }
-
-/*-------------------------------------------------------------------------------------------*/
     public void add (Object value){
         this.addNodeToTail((E) value);
     }
-
     public void delete(){
         this.clearList();
     }
-
     public void insert(Object value, int index) {
         this.addNodeByIndex((E)value, index);
     }
-
     public int size(){
         return this.getSize();
     }
-
     public INode getFirstElement(){
         Node node = getHeadNode();
         return node;
     }
-
     public Object getNextElement(){
         Node node = getHeadNode().getNextNode();
         return node;
     }
-
     public Object getElementValue(){
         Object obj;
         obj = this.getElementValue();
         return obj;
     }
-
-    public void print() {
-        super.print(this);
-    }
-
-    public void printWithIndexes() {
-        super.printWithIndexes(this);
-    }
-
-
 
 }
 

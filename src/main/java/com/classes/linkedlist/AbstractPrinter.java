@@ -4,9 +4,9 @@ package com.classes.linkedlist;
 import com.IList;
 import com.INode;
 
-abstract class AbstractPrinter {
+import java.awt.print.Printable;
 
-
+abstract class AbstractPrinter{
         public void print(IList list){
 
                 INode node = list.getFirstElement();
@@ -26,7 +26,6 @@ abstract class AbstractPrinter {
                         }
                 }
         }
-
         public void printWithIndexes(IList list) {
 
                 INode node = list.getFirstElement();
@@ -45,7 +44,6 @@ abstract class AbstractPrinter {
                         }
                 }
         }
-
 }
 
 
