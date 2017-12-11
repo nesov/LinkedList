@@ -1,10 +1,17 @@
 package com;
 
-/**
- * Created by alexnesov on 23/06/2017.
- */
-public interface INode<T> {
-    T getValue();
-    T getNextNode();
+import com.classes.Node;
+
+public interface INode {
+    Object getValue();
+
+    void setValue(Object value);
+
+    Node getNextNode();
+
+    void setNextNode(Node next);
+
     int getIndex();
+
+    void setIndex(int index);
 }

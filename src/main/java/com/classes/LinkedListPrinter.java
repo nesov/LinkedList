@@ -1,12 +1,11 @@
-package com.classes.linkedlist;
-
-
+package com.classes;
 import com.IList;
 import com.INode;
+import com.IPrintable;
 
-import java.awt.print.Printable;
+public class LinkedListPrinter implements IPrintable {
 
-abstract class AbstractPrinter{
+        public LinkedListPrinter(){};
         public void print(IList list){
 
                 INode node = list.getFirstElement();

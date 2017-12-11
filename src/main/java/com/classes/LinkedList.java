@@ -1,33 +1,45 @@
-package com.classes.linkedlist;
+package com.classes;
 
 import com.IList;
 import com.INode;
-import com.IPrintable;
 
 
-public class LinkedList <E> implements IList {
+public class LinkedList<E> implements IList {
 
-    private Node head = new Node();
-    private Node tail = new Node();
+    private INode head = new Node();
+
+    private INode tail = new Node();
+
     private int size;
+
     private LinkedList setHeadNode(Node head) {
         this.head = head;
         return this;
     }
+
     private LinkedList setTailNode(Node tail) {
         this.tail = tail;
         return this;
     }
+
     private void setSize(int size){
         this.size = size;
     }
     private void setSizeTo0() {
         this.size = 0;
     }
+    public INode getHeadNode() {
+        return head;
+    }
+
+    public INode getTailNode() {
+        return tail;
+    }
+
     private void updateIndexes() {
 
         int index = 0;
-        Node node = getHeadNode();
+        INode node = getHeadNode();
 
         try {
             node.setIndex(index);
@@ -43,6 +55,7 @@ public class LinkedList <E> implements IList {
 
         }
     }
+
     private void addNodeToTail(E value) {
 
         Node a = new Node(value);
@@ -57,38 +70,38 @@ public class LinkedList <E> implements IList {
 
         updateIndexes();
     }
+
     private void addNodeToHead(E value) {
 
-        Node a = new Node(value);
+        INode a = new Node(value);
 
         if (getHeadNode() == null) {
             this.head = this.tail = a;
 
         } else {
-            a.setNextNode(getHeadNode());
-            setHeadNode(a);
+            a.setNextNode((Node) getHeadNode());
+            setHeadNode((Node) a);
         }
 
         this.size++;
 
         updateIndexes();
     }
-    /*--------------------------------------------*/
+
     public LinkedList() {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
+
     public int getSize() {
         return this.size;
     }
-    public Node getHeadNode() {
-        return this.head;
-    }
-    public Node getTailNode() {
-        return this.tail;
-    }
+
+
+
     public void clearList() {
         this.setHeadNode(null).setTailNode(null).setSizeTo0();
     }
+
     public void addNodeByIndex(E value, int index) {
 
                 Node newNode = new Node(value, index);
@@ -103,9 +116,9 @@ public class LinkedList <E> implements IList {
 
                 else {
 
-                    Node next = new Node();
-                    Node prevous = new Node();
-                    Node temp = getHeadNode();
+                    INode next = new Node();
+                    INode prevous = new Node();
+                    INode temp = getHeadNode();
 
                     while (temp.getIndex() != index) {
                         prevous = temp;
@@ -114,16 +127,17 @@ public class LinkedList <E> implements IList {
                     }
 
                     prevous.setNextNode(newNode);
-                    newNode.setNextNode(next);
+                    newNode.setNextNode((Node) next);
                     addNodeToTail((E) temp.getValue());
 
                     updateIndexes();
                 }
     }
+
     public void removeNodeFromList(){
 
-        Node temp = this.getHeadNode();
-        Node previous = new Node();
+        INode temp = this.getHeadNode();
+        INode previous = new Node();
 
         while(temp.getNextNode() != null){
              previous = temp;
@@ -131,7 +145,7 @@ public class LinkedList <E> implements IList {
         }
 
         if (previous != this.getHeadNode() && previous != this.getTailNode())
-            this.setTailNode(previous);
+            this.setTailNode((Node)previous);
 
         else
             this.setHeadNode(null).setTailNode(null).setSizeTo0();
@@ -140,10 +154,11 @@ public class LinkedList <E> implements IList {
         this.setSize(this.size--);
 
     }
+
     public void removeNodeByIndex(int index){
 
-        Node prevous = new Node();
-        Node temp = getHeadNode();
+        INode prevous = new Node();
+        INode temp = getHeadNode();
 
         if (index < 0 || index > getSize() -1) throw new IllegalArgumentException();
 
@@ -156,7 +171,7 @@ public class LinkedList <E> implements IList {
             }
 
             temp = prevous;
-            setTailNode(temp);
+            setTailNode((Node) temp);
         }
 
         else {
@@ -165,7 +180,7 @@ public class LinkedList <E> implements IList {
                 temp = temp.getNextNode();
             }
                 prevous.setNextNode(temp.getNextNode());
-                this.setTailNode(prevous);
+                this.setTailNode((Node)prevous);
 
         }
 
@@ -173,31 +188,41 @@ public class LinkedList <E> implements IList {
         this.setSize(this.size--);
 
     }
+
     public void add (Object value){
         this.addNodeToTail((E) value);
     }
+
     public void delete(){
         this.clearList();
     }
+
     public void insert(Object value, int index) {
         this.addNodeByIndex((E)value, index);
     }
+
     public int size(){
         return this.getSize();
     }
+
     public INode getFirstElement(){
-        Node node = getHeadNode();
+        INode node = getHeadNode();
         return node;
     }
-    public Object getNextElement(){
-        Node node = getHeadNode().getNextNode();
+
+    public INode getNextElement(){
+        INode node = getHeadNode().getNextNode();
         return node;
     }
-    public Object getElementValue(){
-        Object obj;
-        obj = this.getElementValue();
-        return obj;
-    }
+
+
+
+
+//    public Object getElementValue(){
+//        Object obj;
+//        obj = this.getElementValue();
+//        return obj;
+//    }
 
 }
 

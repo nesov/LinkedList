@@ -1,4 +1,4 @@
-package com.classes.linkedlist;
+package com.classes;
 
 
 import com.INode;
@@ -6,7 +6,7 @@ import com.INode;
 /**
  * Created by alexnesov on 24/05/2017.
  */
-public class Node <T>  implements INode {
+public class Node <T> implements INode {
 
     private T value;
 
@@ -26,33 +26,34 @@ public class Node <T>  implements INode {
         this.setIndex(index);
     }
 
-    protected Node(T value, Node next, int index){
-        this.setValue(value);
-        this.setNextNode(next);
-        this.setIndex(index);
-    }
 
+    @Override
     public T getValue(){
         return this.value;
     }
 
-    protected void setValue(T value){
-        this.value = value;
+    @Override
+    public void setValue(Object value){
+        this.value = (T)value;
     }
 
+    @Override
     public Node getNextNode(){
         return this.next;
     }
 
-    protected void setNextNode(Node next){
+    @Override
+    public void setNextNode(Node next){
         this.next =  next;
     }
 
+    @Override
     public int getIndex(){
         return this.index;
     }
 
-    void setIndex(int index){
+    @Override
+    public void setIndex(int index){
         this.index = index;
     }
 }
